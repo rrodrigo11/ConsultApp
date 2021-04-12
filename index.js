@@ -7,7 +7,22 @@ const {historialRouter,
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 
+const swaggerOptions = {
+        swaggerDefinition: {
+                swagger:"2.0",
+                info: {
+                        "title":"Consultapp Documentation",
+                        "description":"",
+                        "version":"1.0.0",
+                        "servers": ["http://localhost:3000"]    
+                }  
+        },
+        apis: ['index.js', 'app/backend/routes/login_route.js']
+}
+const swaggerDoc = swaggerJsDoc();
 /*MIDDLEWARES*/
 app.use(express.json());
 app.use(cors());
