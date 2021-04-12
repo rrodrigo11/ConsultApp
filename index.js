@@ -29,7 +29,7 @@ app.use(cors());
 //app.use(express.static(__dirname+'/public'));
 
 /*ROUTES*/
-
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/historial_route', historialRouter);
 app.use('/user_route', userRouter);
 app.use('/login_route', loginRouter);

@@ -3,6 +3,22 @@ const router = require("express").Router();
 // const users = require('../DB/users');
 // const jwt = require('jsonwebtoken');
 
+/**
+ * @swagger
+ * /:
+ *  post:
+ *      description: dummy endpoint
+ *      parameters:
+ *          - in: body
+ *              name: email, password
+ *              description: login post
+ *              schema:
+ *                  type: object
+ *      responses:
+ *          200:
+ *              description: success call to the endpoint
+ */
+
 router.route('/')
     .post(async (req, res)=>{
         let {email, password} = req.body;  

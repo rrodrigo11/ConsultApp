@@ -1,3 +1,5 @@
+// const router = require("express").Router();
+// const Odon = require("../DB/Odon");
 
 router.post('/', async (req,res)=>{ //Ruta para agregar odontograma
     let {idOdontograma, historialClinico, dientes } = req.body;
@@ -13,3 +15,13 @@ router.post('/', async (req,res)=>{ //Ruta para agregar odontograma
     }
     console.log(req.body.test)
   })
+  
+router.get('/', async (req,res)=>{ //Ruta para obtener 
+  // let resp = await Odon.obtenerOdon();
+  // if(resp){
+  //   res.status(200).send(resp);
+  // }else{
+  //   res.status(404).send({error:"No existen stickers registrados"})
+  // }
+  console.log("Mostrando Odontograma");
+})
