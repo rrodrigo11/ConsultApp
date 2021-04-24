@@ -8,7 +8,7 @@ import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   
-  constructor(ngbConfig: NgbConfig) {
+  constructor( ngbConfig:NgbConfig ) {  
     ngbConfig.animation = true; //esta es la bandera para desactivar las animaciones bootstrap 
   }
 

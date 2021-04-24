@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LogInComponent } from './components/log-in/log-in.component';
 import { DentistInfoComponent } from './components/cruds/dentist/dentist-info/dentist-info.component';
 import { ClientInfoComponent } from './components/cruds/client/client-info/client-info.component';
 import { ClinicHistoryInfoComponent } from './components/cruds/clinic-history/clinic-history-info/clinic-history-info.component';
@@ -18,6 +18,8 @@ import { OdontogramRegisterComponent } from './components/register/odontogram/od
 import { OdontogramInfoComponent } from './components/cruds/odontogram/odontogram-info/odontogram-info.component';
 import { OdontogramListComponent } from './components/cruds/odontogram/odontogram-list/odontogram-list.component';
 import { DentistListComponent } from './components/cruds/dentist/dentist-list/dentist-list.component';
+import { environment } from '../environments/environment';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +42,25 @@ import { DentistListComponent } from './components/cruds/dentist/dentist-list/de
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
+    SocialLoginModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.clientId
+            )
+          },
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
